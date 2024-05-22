@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 function RegisterForm() {
@@ -24,7 +25,7 @@ function RegisterForm() {
     }
     return (
     <>
-        <div className='mb-3'>
+        <div class="container bg-body-tertiary py-1 px-4" style={{ width: '400px' }}>
             <h1 className='text-center my-5'>Registration Form</h1>
             <Formik 
                 initialValues={initialValue} 
@@ -82,7 +83,7 @@ function RegisterForm() {
                         <button className="btn btn-primary" type="submit">Submit</button>
                     </div>
                     <div className="d-grid my-2 justify-content-center">
-                        <p>Already have an account? <a className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' href='#'>Login </a> </p>
+                        <p>Already have an account? <Link className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' to='/login'>Login </Link> </p>
                     </div>
                     
                 </Form>

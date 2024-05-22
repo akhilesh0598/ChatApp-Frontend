@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 const ForgetPasswordForm = () => {
@@ -18,7 +19,7 @@ const ForgetPasswordForm = () => {
     }
 
     return (
-        <div className='mb-3'>
+        <div class="container bg-body-tertiary py-2 px-4" style={{ width: '400px' }}>
             <h1 className='text-center my-5'>Forget Password</h1>
             <Formik
                 initialValues={initialValues}
@@ -44,7 +45,7 @@ const ForgetPasswordForm = () => {
                     </div>
 
                     <div className="d-grid my-2 justify-content-center">
-                        <p>Back To? <a className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' href='#'>Login </a> </p>
+                        <p>Back To? <Link className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' to='/login'>Login </Link> </p>
                     </div>
                     
                 </Form>

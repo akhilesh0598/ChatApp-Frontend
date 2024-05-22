@@ -1,13 +1,26 @@
-import LoginForm from './Components/Authentication/LoginForm';
-import ForgetPasswordForm from './Components/Authentication/ForgetPasswordForm';
-import ResetPasswordForm from './Components/Authentication/ResetPasswordForm';
-import Dashboard from './Components/Dashboard/Dashboard';
+import HomePage from './Components/Home/HomePage';
+import {useLocation,Outlet} from 'react-router-dom';
+import Navbar from './Components/Home/Navbar';
 
 function App() {
+
+  var location=useLocation();
+
   return (
-    <div className='App'>
-      <Dashboard/>
-    </div>
+    <>
+    <div className='container'>
+        {
+            location.pathname==='/'?<HomePage />:(
+                <>
+                <Navbar/>
+                <div className='container-fluid' style={{marginTop:'7em'}}>
+                    <Outlet/>
+                </div>
+                </>
+            )
+        }
+        </div>
+        </>
   );
 }
 

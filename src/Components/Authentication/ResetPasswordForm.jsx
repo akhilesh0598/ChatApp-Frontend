@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 function ResetPasswordForm() {
@@ -20,7 +21,7 @@ function ResetPasswordForm() {
     
     return (
     <>
-        <div className='mb-3'>
+        <div class="container bg-body-tertiary py-2 px-4" style={{ width: '400px' }}>
             <h1 className='text-center my-5'>Reset Password Form</h1>
             <Formik 
                 initialValues={initialValues} 
@@ -54,6 +55,9 @@ function ResetPasswordForm() {
                 </div>
                     <div className="d-grid my-5">
                         <button className="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                    <div className="d-grid my-2 justify-content-center">
+                        <p>Back To <Link className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' to='/login'>Login </Link> </p>
                     </div>
                 </Form>
                 )}
