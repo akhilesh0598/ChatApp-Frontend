@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState={
-    token:localStorage.getItem('jwt'),
+    token:localStorage.getItem('jwt')||null,
     error:'',
     appLoaded:false
 }
@@ -17,7 +17,6 @@ export const authenticationSlice=createSlice({
             state.appLoaded=true;
         }
     }
-
 });
 
 export default authenticationSlice.reducer;

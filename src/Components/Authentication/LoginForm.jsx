@@ -1,13 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 
 function LoginForm() {
-
-    const count = useSelector((state) => state.authentication.user);
 
     const initialValue={
         email:'',
@@ -23,10 +20,9 @@ function LoginForm() {
     const onSubmit=(values)=>{
         console.log(values);
     }
-    
+
     return (
     <>
-    <div>{count.name}</div>
         <div className="container bg-body-tertiary py-2 px-4" style={{ width: '400px' }}>
             <h1 className='text-center my-5'>Login Form</h1>
             <Formik 
@@ -34,9 +30,9 @@ function LoginForm() {
                 validationSchema={validationSchema} 
                 onSubmit={onSubmit}
                 >
-                {({ errors, touched }) => (
-                <Form>
-                <div className='mb-3'>
+                {({handleSubmit, isSubmitting, errors, touched }) => (
+                <Form onSubmit={handleSubmit}>
+                 <div className='mb-3'>
                         <label htmlFor='email' className='form-label'>Email Address</label>
                         <Field
                         type='email'
@@ -47,9 +43,6 @@ function LoginForm() {
                         <ErrorMessage name="email" component={"div"} className='invalid-feedback' />
                         
                     </div>
-
-                    
-
                     <div className='mb-3'>
                         <label htmlFor='password' className='form-label'>Password</label>
                         <Field
@@ -83,11 +76,10 @@ function LoginForm() {
                     <div className="d-grid my-2 justify-content-center">
                         <p>Don't have an account? <Link className=' ms-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' to='/signup'>Sign up </Link> </p>
                     </div>
-                    
                 </Form>
                 )}
             </Formik>
-            </div>
+        </div>
     /</>
     );
 }

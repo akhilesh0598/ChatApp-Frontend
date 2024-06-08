@@ -2,8 +2,12 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+// import {useDispatch} from 'react-redux';
+// import { registerUser } from '../../app/store/authenticationSlice';
+
 
 function RegisterForm() {
+    //const dispatch=useDispatch();
 
     const initialValue={
         fullName:'',
@@ -21,19 +25,19 @@ function RegisterForm() {
     });
 
     const onSubmit=(values)=>{
-        console.log(values);
+        //dispatch(registerUser(values));
     }
     return (
     <>
-        <div class="container bg-body-tertiary py-1 px-4" style={{ width: '400px' }}>
+        <div className="container bg-body-tertiary py-1 px-4" style={{ width: '400px' }}>
             <h1 className='text-center my-5'>Registration Form</h1>
             <Formik 
                 initialValues={initialValue} 
                 validationSchema={validationSchema} 
                 onSubmit={onSubmit}
                 >
-                {({ errors, touched }) => (
-                <Form>
+                {({isSubmitting, handleSubmit,errors, touched }) => (
+                <Form onSubmit={handleSubmit}>
                 <div className='mb-3'>
                         <label htmlFor='fullName' className='form-label'>Full Name</label>
                         <Field
